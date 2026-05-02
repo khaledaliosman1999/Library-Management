@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_library_members,library_members,model_library_members,,1,1,1,1
+access_library_books,library_books,model_library_books,,1,1,1,1
+access_booking,booking,model_booking,,1,1,1,1
+access_booking_line,booking_line,model_booking_line,,1,1,1,1

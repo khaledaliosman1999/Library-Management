@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--    Form View  -->
+    <record id="books_form_view" model="ir.ui.view">
+        <field name="name">books form view</field>
+        <field name="model">library.books</field>
+        <field name="arch" type="xml">
+            <form string="Library Books">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string=""/>
+                        <h1>
+                            <field name="name" placeholder="Books's Name "/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="author"/>
+                            <field name="category"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--    List View  -->
+    <record id="books_list_view" model="ir.ui.view">
+        <field name="name">Books list view</field>
+        <field name="model">library.books</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="author"/>
+                <field name="category"/>
+            </list>
+        </field>
+    </record>
+
+    <!--    Search View  -->
+    <record id="books_search_view" model="ir.ui.view">
+        <field name="name">books_list_view</field>
+        <field name="model">library.books</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <!--    Action  -->
+    <record id="books_action" model="ir.actions.act_window">
+        <field name="name">Books</field>
+        <field name="res_model">library.books</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="root_menu_books" name="Books" sequence="2" parent="root_menu" action="books_action"/>
+
+</odoo>

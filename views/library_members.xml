@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--    Form View  -->
+    <record id="members_form_view" model="ir.ui.view">
+        <field name="name">members form view</field>
+        <field name="model">library.members</field>
+        <field name="arch" type="xml">
+            <form string="Library Members">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string=""/>
+                        <h1>
+                            <field name="name" placeholder="Member's Name "/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="phone"/>
+                            <field name="email"/>
+                        </group>
+                        <group>
+                            <field name="address"/>
+                            <field name="register_data"/>
+                            <field name="user_id" readonly="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--    List View  -->
+    <record id="members_list_view" model="ir.ui.view">
+        <field name="name">members list view</field>
+        <field name="model">library.members</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="address"/>
+            </list>
+        </field>
+    </record>
+
+    <!--    Search View  -->
+    <record id="members_search_view" model="ir.ui.view">
+        <field name="name">members_list_view</field>
+        <field name="model">library.members</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <!--    Action  -->
+    <record id="members_action" model="ir.actions.act_window">
+        <field name="name">Members</field>
+        <field name="res_model">library.members</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="root_menu" name="Library Managements"/>
+
+    <menuitem id="root_menu_members" name="Members" sequence="1" parent="root_menu" action="members_action"/>
+</odoo>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--    Form View  -->
+    <record id="booking_form_view" model="ir.ui.view">
+        <field name="name">booking form view</field>
+        <field name="model">booking</field>
+        <field name="arch" type="xml">
+            <form string="Library Booking">
+                <headr>
+                    <button name="action_confirm" id="action_confirm" string="Confirm" class="btn_primary"
+                            type="object"/>
+                    <button name="action_borrowed" id="action_borrowed" string="Borrowed" class="btn_primary"
+                            type="object"/>
+
+                    <field name="state" widget="statusbar" statusbar_visible="draft,borrowed,return,late,cancel"/>
+                </headr>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="member_id" class="oe_edit_only" string=""/>
+                        <h1>
+                            <field name="member_id" placeholder="Booking's Name "/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="booking_date"/>
+                        </group>
+                        <group>
+                            <field name="return_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Booking Line" name="booking_line_ids">
+                            <field name="booking_line_ids">
+                                <list string="Booking Line" editable="bottom">
+                                    <field name="book_id"/>
+                                    <field name="author"/>
+                                    <field name="category"/>
+                                </list>
+                                <!--                                <form>-->
+                                <!--                                    <field name="book_id"/>-->
+                                <!--                                </form>-->
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!--    List View  -->
+    <record id="booking_list_view" model="ir.ui.view">
+        <field name="name">Booking list view</field>
+        <field name="model">booking</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="member_id"/>
+                <field name="booking_date"/>
+                <field name="return_date"/>
+            </list>
+        </field>
+    </record>
+
+    <!--    Search View  -->
+    <record id="booking_search_view" model="ir.ui.view">
+        <field name="name">booking_list_view</field>
+        <field name="model">booking</field>
+        <field name="arch" type="xml">
+            <search>
+                <!--                <field name="name"/>-->
+            </search>
+        </field>
+    </record>
+
+    <!--    Action  -->
+    <record id="booking_action" model="ir.actions.act_window">
+        <field name="name">Booking</field>
+        <field name="res_model">booking</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="root_menu_booking" name="Booking" sequence="3" parent="root_menu" action="booking_action"/>
+
+</odoo>
